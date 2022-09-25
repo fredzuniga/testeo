@@ -17,6 +17,7 @@
 
               </li>
             </ul>
+            {{ total }}
             <pre>
                 {{ $data || json }}
             </pre>
@@ -107,9 +108,14 @@ new Vue({
                   });
                 },
                 total(){
-                    /*return this.shoppingItems.reduce((total, item) => {
-                        return total + item.price * item.peace;
-                    }, 0);    */
+                  var total = 0;
+                	this.shoppingItems.map((item,index) => {
+                    console.log("Number----" + Number(item.price * item.peace));
+                    var subtotal = Number(item.price * item.peace);
+                    total += subtotal;
+                    
+                  });
+                  return total;
                 } 
               }
             })
